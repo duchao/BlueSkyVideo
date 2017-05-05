@@ -11,7 +11,7 @@ import dagger.Component;
  * Created by duchao on 2017/5/5.
  */
 @ActivityScope
-@Component(dependencies = AppComponet.class, modules = ActivityModule.class)
+@Component(dependencies = AppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
     Activity getActivity();
 

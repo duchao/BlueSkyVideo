@@ -12,6 +12,6 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = AppModule.class)
-public interface AppComponet {
+public interface AppComponent {
     App getContext();
 }

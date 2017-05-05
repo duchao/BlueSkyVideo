@@ -11,7 +11,7 @@ import dagger.Component;
  * Created by duchao on 2017/5/5.
  */
 @FragmentScope
-@Component(dependencies = AppComponet.class, modules = FragmentModule.class)
+@Component(dependencies = AppComponent.class, modules = FragmentModule.class)
 public interface FragmentComponet {
     Activity getActivity();
 }

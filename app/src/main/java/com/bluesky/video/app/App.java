@@ -9,6 +9,9 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.bluesky.video.component.InitializeService;
+import com.bluesky.video.di.component.AppComponent;
+import com.bluesky.video.di.component.DaggerAppComponent;
+import com.bluesky.video.di.module.AppModule;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +23,7 @@ import java.util.Set;
 public class App extends Application {
     private Set<Activity> mActivities;
     private static App mInstance;
+    private static AppComponent mAppComponent;
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
     public static float DIMEN_RATE = -1.0F;
@@ -52,6 +56,16 @@ public class App extends Application {
         if (mActivities != null) {
             mActivities.remove(activity);
         }
+    }
+
+    public static AppComponent getAppComponent() {
+        if (mAppComponent == null) {
+            mAppComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(mInstance))
+                    .build();
+        }
+        return  mAppComponent;
+
     }
 
     public void exitApp() {

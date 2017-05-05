@@ -20,4 +20,9 @@ public class SplashActivity extends BaseMvpActivity {
     protected void initEventAndData() {
 
     }
+
+    @Override
+    protected void initInject() {
+
+    }
 }
