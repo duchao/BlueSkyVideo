@@ -31,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayout());
         mUnbinder = ButterKnife.bind(this);
         mActivity = this;
+        onViewCreated();
         App.getInstance().addActivity(this);
         initEventAndData();
     }
@@ -40,6 +41,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         App.getInstance().removeActivity(this);
         mUnbinder.unbind();
+    }
+
+    protected void onViewCreated() {
+
     }
 
     protected void setToolbar(Toolbar toolbar, String title) {
