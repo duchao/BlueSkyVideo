@@ -2,12 +2,14 @@ package com.bluesky.video.model.http;
 
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
+import com.bluesky.video.model.bean.IsUserRegisterBean;
 import com.bluesky.video.utils.NetworkUtil;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Flowable;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -15,19 +17,25 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by duchao on 2017/5/6.
  */
 
 public class RetrofitHelper {
-    private static OkHttpClient okHttpClient = null;
+    private static OkHttpClient sOkHttpClient = null;
+
+    private static MvApiService sMvApiService = null;
 
     public RetrofitHelper() {
         init();
     }
     private void init() {
-
+        initOkHttp();
+        sMvApiService = getMvApiService();
     }
     private void initOkHttp() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -91,7 +99,22 @@ public class RetrofitHelper {
 
         //错误重连
         builder.retryOnConnectionFailure(true);
-        okHttpClient = builder.build();
+        sOkHttpClient = builder.build();
+    }
+
+    private static MvApiService getMvApiService() {
+        Retrofit zhihuRetrofit = new Retrofit.Builder()
+                .baseUrl(MvApiService.HOST)
+                .client(sOkHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return zhihuRetrofit.create(MvApiService.class);
+    }
+
+    public Flowable<IsUserRegisterBean> getIsUserRegistInfo() {
+        //这里后续要修改成设备名称
+        return sMvApiService.getIsUserRegistInfo("1", "1", "1");
     }
 
 }

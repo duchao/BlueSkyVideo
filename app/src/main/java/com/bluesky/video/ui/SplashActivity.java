@@ -8,6 +8,7 @@ import com.bluesky.video.base.BaseMvpActivity;
 import com.bluesky.video.component.ImageLoader;
 import com.bluesky.video.presenter.SplashPresenter;
 import com.bluesky.video.presenter.contract.SplashContract;
+import com.bluesky.video.utils.NetworkUtil;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
@@ -31,11 +32,14 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
     @Override
     protected void initEventAndData() {
         ImageLoader.load(this, DISPLAY_IMG_URL, mImageView);
+        if (NetworkUtil.isNetworkAvailable()) {
+            mPresenter.isUserRegister();
+        }
     }
 
     @Override
     protected void initInject() {
-
+        getActivityComponent().inject(this);
     }
 
     @Override

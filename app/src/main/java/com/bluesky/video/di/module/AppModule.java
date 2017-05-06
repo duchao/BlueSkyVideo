@@ -1,6 +1,7 @@
 package com.bluesky.video.di.module;
 
 import com.bluesky.video.app.App;
+import com.bluesky.video.model.http.RetrofitHelper;
 
 import javax.inject.Singleton;
 
@@ -22,6 +23,12 @@ public class AppModule {
     @Singleton
     App provideApplicationContext() {
         return mApp;
+    }
+
+    @Provides
+    @Singleton
+    RetrofitHelper provideRetrofitHelper() {
+        return  new RetrofitHelper();
     }
 
 }

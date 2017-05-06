@@ -12,6 +12,6 @@ public interface SplashContract {
 
     }
     interface Presenter extends BasePresenter<View> {
-
+        void isUserRegister();
     }
 }
