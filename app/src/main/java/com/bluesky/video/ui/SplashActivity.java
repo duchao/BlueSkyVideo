@@ -1,11 +1,14 @@
 package com.bluesky.video.ui;
 
 
+import android.content.Intent;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bluesky.video.R;
 import com.bluesky.video.base.BaseMvpActivity;
 import com.bluesky.video.component.ImageLoader;
+import com.bluesky.video.model.manager.UserInfoManager;
 import com.bluesky.video.presenter.SplashPresenter;
 import com.bluesky.video.presenter.contract.SplashContract;
 import com.bluesky.video.utils.NetworkUtil;
@@ -33,7 +36,12 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
     protected void initEventAndData() {
         ImageLoader.load(this, DISPLAY_IMG_URL, mImageView);
         if (NetworkUtil.isNetworkAvailable()) {
-            mPresenter.isUserRegister();
+            String userId = UserInfoManager.getInstance().getUserId();
+            if (TextUtils.isEmpty(userId)) {
+                mPresenter.isUserRegister();
+            } else {
+                mPresenter.delayTodo(3000L);
+            }
         }
     }
 
@@ -46,5 +54,12 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
     protected void onDestroy() {
         Glide.clear(mImageView);
         super.onDestroy();
+    }
+
+    @Override
+    public void jumpToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

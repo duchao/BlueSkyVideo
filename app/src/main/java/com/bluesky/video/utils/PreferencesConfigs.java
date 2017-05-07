@@ -9,6 +9,10 @@ public class PreferencesConfigs {
     private SharedPreferences mSp;
     public static String PREFERENCE_NAME = "MGTVCommon";
     public static final String IS_USER_REGISTER = "is_user_register";
+    public static final String LOCAL_SHARE_USER_ID = "localshare_userid";
+    public static final String LOCAL_SHARE_PASSWORD = "localshare_password";
+    public static final String LOCAL_SHARE_LEVEL = "localshare_leve";
+    public static final String LOCAL_SHARE_APP_CONFIG = "localshare_appconfig";
     private static class SingletonHolder {
         private static final PreferencesConfigs INSTANCE = new PreferencesConfigs();
     }

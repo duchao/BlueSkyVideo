@@ -6,4 +6,6 @@ package com.bluesky.video.model.http;
 
 public interface CdnApiService {
     String HOST = "http://cdn.jore123.com/";
+
+
 }

@@ -3,6 +3,7 @@ package com.bluesky.video.model.http;
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
 import com.bluesky.video.model.bean.IsUserRegisterBean;
+import com.bluesky.video.model.bean.RegisterData;
 import com.bluesky.video.utils.NetworkUtil;
 
 import java.io.File;
@@ -30,12 +31,15 @@ public class RetrofitHelper {
 
     private static MvApiService sMvApiService = null;
 
+    private static ApphApiService sApphApiService = null;
+
     public RetrofitHelper() {
         init();
     }
     private void init() {
         initOkHttp();
         sMvApiService = getMvApiService();
+        sApphApiService = getApphApiService();
     }
     private void initOkHttp() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -112,9 +116,37 @@ public class RetrofitHelper {
         return zhihuRetrofit.create(MvApiService.class);
     }
 
+    private static ApphApiService getApphApiService() {
+        Retrofit zhihuRetrofit = new Retrofit.Builder()
+                .baseUrl(ApphApiService.HOST)
+                .client(sOkHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return zhihuRetrofit.create(ApphApiService.class);
+    }
+
     public Flowable<IsUserRegisterBean> getIsUserRegistInfo() {
         //这里后续要修改成设备名称
         return sMvApiService.getIsUserRegistInfo("1", "1", "1");
+    }
+
+    public Flowable<RegisterData> initRegisterInfo() {
+        //这里后续要修改成设备名称
+        return sApphApiService.initRegisterInfo(
+                "a294705",
+                "867905027942921",
+                "15",
+                "68:3e:34:9c:0d:db",
+                "68:3E:34:9C:0D:DC",
+                "",
+                "",
+                "com.feiofjoc.xkjoelb",
+                "B4:66:CE:B5:A3:BC:6D:36:F8:18:29:B2:BC:27:4A:DA:CB:E9:C0:F4",
+                "22",
+                "1",
+                "2000025",
+                "0" );
     }
 
 }

@@ -9,9 +9,11 @@ import com.bluesky.video.base.BaseView;
 
 public interface SplashContract {
     interface View extends BaseView {
+        void jumpToMain();
 
     }
     interface Presenter extends BasePresenter<View> {
         void isUserRegister();
+        void delayTodo(long millSeconds);
     }
 }
