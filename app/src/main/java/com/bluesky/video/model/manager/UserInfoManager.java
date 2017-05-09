@@ -1,7 +1,7 @@
 package com.bluesky.video.model.manager;
 
 import com.bluesky.video.model.bean.UserBean;
-import com.bluesky.video.utils.PreferencesConfigs;
+import com.bluesky.video.component.SharePreferencesHelper;
 
 /**
  * Created by duchao on 2017/5/7.
@@ -9,7 +9,7 @@ import com.bluesky.video.utils.PreferencesConfigs;
 
 public class UserInfoManager {
 
-    private PreferencesConfigs mConfigs;
+    private SharePreferencesHelper mConfigs;
 
     private String mUserId;
 
@@ -25,7 +25,7 @@ public class UserInfoManager {
     }
 
     private UserInfoManager() {
-        mConfigs = PreferencesConfigs.getInstance();
+        mConfigs = SharePreferencesHelper.getInstance();
     }
 
     public void setUserData(UserBean userBean) {
@@ -33,16 +33,16 @@ public class UserInfoManager {
             mUserId = userBean.getUserid();
             mPassword = userBean.getPassword();
             mLevel = userBean.getLeve();
-            mConfigs.set(PreferencesConfigs.LOCAL_SHARE_USER_ID, mUserId);
-            mConfigs.set(PreferencesConfigs.LOCAL_SHARE_PASSWORD, mPassword);
-            mConfigs.set(PreferencesConfigs.LOCAL_SHARE_LEVEL, mLevel);
-            mConfigs.set(PreferencesConfigs.LOCAL_SHARE_APP_CONFIG, userBean.getAppconfig().toString());
+            mConfigs.set(SharePreferencesHelper.LOCAL_SHARE_USER_ID, mUserId);
+            mConfigs.set(SharePreferencesHelper.LOCAL_SHARE_PASSWORD, mPassword);
+            mConfigs.set(SharePreferencesHelper.LOCAL_SHARE_LEVEL, mLevel);
+            mConfigs.set(SharePreferencesHelper.LOCAL_SHARE_APP_CONFIG, userBean.getAppconfig().toString());
         }
 
     }
 
     public String getUserId() {
-        return mConfigs.getString(PreferencesConfigs.LOCAL_SHARE_USER_ID, "");
+        return mConfigs.getString(SharePreferencesHelper.LOCAL_SHARE_USER_ID, "");
     }
 
 }

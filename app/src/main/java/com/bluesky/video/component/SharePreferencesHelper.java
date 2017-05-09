@@ -1,11 +1,11 @@
-package com.bluesky.video.utils;
+package com.bluesky.video.component;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.bluesky.video.app.App;
 
-public class PreferencesConfigs {
+public class SharePreferencesHelper {
     private SharedPreferences mSp;
     public static String PREFERENCE_NAME = "MGTVCommon";
     public static final String IS_USER_REGISTER = "is_user_register";
@@ -14,13 +14,13 @@ public class PreferencesConfigs {
     public static final String LOCAL_SHARE_LEVEL = "localshare_leve";
     public static final String LOCAL_SHARE_APP_CONFIG = "localshare_appconfig";
     private static class SingletonHolder {
-        private static final PreferencesConfigs INSTANCE = new PreferencesConfigs();
+        private static final SharePreferencesHelper INSTANCE = new SharePreferencesHelper();
     }
-    public static PreferencesConfigs getInstance() {
+    public static SharePreferencesHelper getInstance() {
         return  SingletonHolder.INSTANCE;
     }
 
-    public PreferencesConfigs() {
+    public SharePreferencesHelper() {
         mSp = App.getInstance().getSharedPreferences(PREFERENCE_NAME,
                 Context.MODE_PRIVATE);
     }
@@ -29,7 +29,7 @@ public class PreferencesConfigs {
         return mSp.getString(key, defValue);
     }
 
-    public PreferencesConfigs set(String key, String value) {
+    public SharePreferencesHelper set(String key, String value) {
         mSp.edit().putString(key, value).commit();
         return this;
     }
@@ -38,7 +38,7 @@ public class PreferencesConfigs {
         return mSp.getBoolean(key, defValue);
     }
 
-    public PreferencesConfigs set(String key, boolean value) {
+    public SharePreferencesHelper set(String key, boolean value) {
         mSp.edit().putBoolean(key, value).commit();
         return this;
     }
@@ -47,7 +47,7 @@ public class PreferencesConfigs {
         return mSp.getInt(key, defValue);
     }
 
-    public PreferencesConfigs set(String key, int value) {
+    public SharePreferencesHelper set(String key, int value) {
         mSp.edit().putInt(key, value).commit();
         return this;
     }

@@ -2,13 +2,10 @@ package com.bluesky.video.app;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
 
 import com.bluesky.video.component.InitializeService;
+import com.bluesky.video.config.SystemInfoBean;
 import com.bluesky.video.di.component.AppComponent;
 import com.bluesky.video.di.component.DaggerAppComponent;
 import com.bluesky.video.di.module.AppModule;
@@ -26,8 +23,6 @@ public class App extends Application {
     private static AppComponent mAppComponent;
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
-    public static float DIMEN_RATE = -1.0F;
-    public static int DIMEN_DPI = -1;
 
     static {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -36,7 +31,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        getScreenSize();
         InitializeService.start(this);
 
     }
@@ -65,7 +59,6 @@ public class App extends Application {
                     .build();
         }
         return  mAppComponent;
-
     }
 
     public void exitApp() {
@@ -80,19 +73,4 @@ public class App extends Application {
         System.exit(0);
     }
 
-    private void getScreenSize() {
-        WindowManager windowManager = (WindowManager)this.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();
-        Display display = windowManager.getDefaultDisplay();
-        display.getMetrics(dm);
-        DIMEN_RATE = dm.density / 1.0F;
-        DIMEN_DPI = dm.densityDpi;
-        SCREEN_WIDTH = dm.widthPixels;
-        SCREEN_HEIGHT = dm.heightPixels;
-        if(SCREEN_WIDTH > SCREEN_HEIGHT) {
-            int t = SCREEN_HEIGHT;
-            SCREEN_HEIGHT = SCREEN_WIDTH;
-            SCREEN_WIDTH = t;
-        }
-    }
 }

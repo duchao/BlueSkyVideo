@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by duchao on 2017/5/6.
  */
 
-public class RxUtil {
+public class RxUtils {
     public static <T> FlowableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
         return new FlowableTransformer<T, T>() {
             @Override
@@ -19,4 +19,5 @@ public class RxUtil {
             }
         };
     }
+
 }
