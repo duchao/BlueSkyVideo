@@ -1,6 +1,7 @@
 package com.bluesky.video.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Activity mActivity;
 
+    protected Context mContext;
+
     protected abstract int getLayout();
 
     protected abstract void initEventAndData();
@@ -31,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayout());
         mUnbinder = ButterKnife.bind(this);
         mActivity = this;
+        mContext = this;
         onViewCreated();
         App.getInstance().addActivity(this);
         initEventAndData();

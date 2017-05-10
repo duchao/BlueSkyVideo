@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.bluesky.video.di.module.ActivityModule;
 import com.bluesky.video.di.scope.ActivityScope;
+import com.bluesky.video.ui.MainActivity;
 import com.bluesky.video.ui.SplashActivity;
 
 import dagger.Component;
@@ -16,5 +17,6 @@ import dagger.Component;
 public interface ActivityComponent {
     Activity getActivity();
     void inject(SplashActivity splashActivity);
+    void inject(MainActivity mainActivity);
 
 }

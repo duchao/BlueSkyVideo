@@ -17,30 +17,9 @@ public class SystemUtils {
 
     private static Application mApp = App.getInstance();
 
-//    public static interface APIS {
-//        public static final String BASE_HOST = "http://api.1717goal.com.cn/app/";
-//
-//        public static final String REGISTER = "userreg";
-//
-//        public static final String HOME = "video";
-//
-//        public static final String XILIE = BASE_HOST + "pindao";
-//
-//        public static final String SERCH = BASE_HOST + "search";
-//
-//        public static final String UP_DATA = BASE_HOST + "version";
-//
-//        public static final String PAY_Bak = BASE_HOST + "paybak";
-//
-//        public static final String LOGIN = BASE_HOST + "services/user/login";
-//
-//        public static final String UP_USERINFO = BASE_HOST + "services/user/update";
-//    }
-
     public static String getIMEI() {
-        String Imei = ((TelephonyManager) mApp.getSystemService(TELEPHONY_SERVICE))
-                .getDeviceId();
-        return Imei;
+        String imei = ((TelephonyManager) mApp.getSystemService(TELEPHONY_SERVICE)).getDeviceId();
+        return imei;
     }
 
     public static String getResolution() {

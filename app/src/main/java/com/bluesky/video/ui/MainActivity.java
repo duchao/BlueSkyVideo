@@ -1,23 +1,36 @@
 package com.bluesky.video.ui;
 
-import android.content.Intent;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 
 import com.bluesky.video.R;
-import com.bluesky.video.base.BaseActivity;
-import com.bluesky.video.utils.ScreenUtils;
+import com.bluesky.video.base.BaseMvpActivity;
+import com.bluesky.video.presenter.MainPresenter;
+import com.bluesky.video.presenter.contract.MainContract;
+import com.bluesky.video.ui.adapter.MainViewPagerAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
 
-    @BindView(R.id.search)
-    TextView mSearchView;
 
-    RelativeLayout mLinearLayout = null;
+    @BindView(R.id.tl_main_tab)
+    TabLayout mFooterTabLayout;
+    @BindView(R.id.vp_main_content)
+    ViewPager mContentViewPager;
 
+    private TabLayout.Tab one;
+    private TabLayout.Tab two;
+    private TabLayout.Tab three;
+    private TabLayout.Tab four;
+
+    private ArrayList<Fragment> mFragmentList;
+
+    private ArrayList<String> mTabTitleList;
 
     @Override
     protected int getLayout() {
@@ -26,19 +39,47 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initEventAndData() {
-        Object localObject2 = new RelativeLayout.LayoutParams(-1, ScreenUtils.dip2px(this, 54.0F));
-        ((RelativeLayout.LayoutParams)localObject2).addRule(12);
-        int i = 0;
+        initFragment();
+        initTabTitle();
+        MainViewPagerAdapter mMainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(),
+                mFragmentList, mTabTitleList);
+        mContentViewPager.setAdapter(mMainViewPagerAdapter);
+        mFooterTabLayout.setupWithViewPager(mContentViewPager);
+        initTabIcon();
     }
+
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    protected void initInject() {
+        getActivityComponent().inject(this);
     }
 
-    @OnClick(R.id.search)
-    public void onSearch() {
-        Intent intent = new Intent(this, SearchActivity.class);
-        startActivity(intent);
+    private void initFragment() {
+        mFragmentList = new ArrayList<>();
+        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new OneFragment());
     }
+
+    private void initTabTitle() {
+        mTabTitleList = new ArrayList<>();
+        mTabTitleList.add("1");
+        mTabTitleList.add("2");
+        mTabTitleList.add("3");
+        mTabTitleList.add("4");
+    }
+
+    private void initTabIcon() {
+        one = mFooterTabLayout.getTabAt(0);
+        two = mFooterTabLayout.getTabAt(1);
+        three = mFooterTabLayout.getTabAt(2);
+        four = mFooterTabLayout.getTabAt(3);
+        one.setIcon(ContextCompat.getDrawable(mContext, R.mipmap.ic_launcher));
+        two.setIcon(ContextCompat.getDrawable(mContext, R.mipmap.ic_launcher));
+        three.setIcon(ContextCompat.getDrawable(mContext, R.mipmap.ic_launcher));
+        four.setIcon(ContextCompat.getDrawable(mContext, R.mipmap.ic_launcher));
+    }
+
+
 }

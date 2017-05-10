@@ -51,14 +51,14 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                         if (verifySign.equals(sign) && (level > currentLevel)) {
                             userInfoBean.setUserType(level);
                         }
-                        jumpToMain();
+                        jumpToMain(0);
                     }
                 });
         addSubscribe(rxSubscrition);
     }
 
-    private void jumpToMain() {
-        Disposable rxSubscrition = Flowable.timer(3, TimeUnit.SECONDS)
+    private void jumpToMain(long seconds) {
+        Disposable rxSubscrition = Flowable.timer(seconds, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(@NonNull Long aLong) throws Exception {
