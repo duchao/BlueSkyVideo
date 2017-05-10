@@ -18,7 +18,7 @@ import javax.inject.Inject;
 public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragment implements BaseView {
 
     @Inject
-    T mPresenter;
+    protected T mPresenter;
     protected abstract void initInject();
 
     @Override
@@ -41,6 +41,16 @@ public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragm
                 .appComponent(App.getAppComponent())
                 .fragmentModule(getFragmentModule())
                 .build();
+    }
+
+    @Override
+    public void showErrorMsg(String msg) {
+
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+
     }
 
     protected FragmentModule getFragmentModule() {

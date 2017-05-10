@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BlueSkyVideo</string>
+    <string name="fragment_tab_one_footer_text">升级会员，查看更多</string>
 </resources>

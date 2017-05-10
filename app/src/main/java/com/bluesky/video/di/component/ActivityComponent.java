@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.bluesky.video.di.module.ActivityModule;
 import com.bluesky.video.di.scope.ActivityScope;
-import com.bluesky.video.ui.MainActivity;
-import com.bluesky.video.ui.SplashActivity;
+import com.bluesky.video.ui.activity.MainActivity;
+import com.bluesky.video.ui.activity.SplashActivity;
 
 import dagger.Component;
 

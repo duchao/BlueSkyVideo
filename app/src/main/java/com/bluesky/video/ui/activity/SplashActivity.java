@@ -1,4 +1,4 @@
-package com.bluesky.video.ui;
+package com.bluesky.video.ui.activity;
 
 
 import android.content.Intent;

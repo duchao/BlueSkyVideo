@@ -21,9 +21,6 @@ public class AppUtils {
 
     private static Application mApp = App.getInstance();
 
-
-
-
     public static String getChannel() {
         String channel ="";
         ApplicationInfo appinfo = App.getInstance().getApplicationInfo();

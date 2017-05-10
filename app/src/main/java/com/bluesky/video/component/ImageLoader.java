@@ -1,6 +1,7 @@
 package com.bluesky.video.component;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -15,5 +16,9 @@ public class ImageLoader {
         if(!activity.isDestroyed()) {
             Glide.with(activity).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
         }
+    }
+
+    public static void load(Context context, String url, ImageView iv) {    //使用Glide加载圆形ImageView(如头像)时，不要使用占位图
+        Glide.with(context).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
     }
 }

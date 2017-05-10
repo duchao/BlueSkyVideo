@@ -54,6 +54,9 @@ dependencies {
     //glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
+    //GridView with Header and Footer
+    compile 'in.srain.cube:grid-view-with-header-footer:1.0.12'
+
 
 
 }

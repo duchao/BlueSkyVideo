@@ -1,4 +1,4 @@
-package com.bluesky.video.ui;
+package com.bluesky.video.ui.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import com.bluesky.video.base.BaseMvpActivity;
 import com.bluesky.video.presenter.MainPresenter;
 import com.bluesky.video.presenter.contract.MainContract;
 import com.bluesky.video.ui.adapter.MainViewPagerAdapter;
+import com.bluesky.video.ui.fragment.TabOneFragment;
 
 import java.util.ArrayList;
 
@@ -56,10 +57,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     private void initFragment() {
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(new OneFragment());
-        mFragmentList.add(new OneFragment());
-        mFragmentList.add(new OneFragment());
-        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new TabOneFragment());
+        mFragmentList.add(new TabOneFragment());
+        mFragmentList.add(new TabOneFragment());
+        mFragmentList.add(new TabOneFragment());
     }
 
     private void initTabTitle() {
