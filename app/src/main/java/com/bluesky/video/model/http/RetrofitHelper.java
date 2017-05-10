@@ -2,7 +2,7 @@ package com.bluesky.video.model.http;
 
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
-import com.bluesky.video.config.SystemInfoBean;
+import com.bluesky.video.model.config.SystemInfo;
 import com.bluesky.video.model.bean.RegistBean;
 import com.bluesky.video.utils.NetworkUtils;
 
@@ -30,10 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private static OkHttpClient sOkHttpClient = null;
-
-//    private static MvApiService sMvApiService = null;
-//
-//    private static ApphApiService sApphApiService = null;
     private static ApiService sApiService = null;
 
     public RetrofitHelper() {
@@ -42,8 +38,6 @@ public class RetrofitHelper {
     private void init() {
         initOkHttp();
         sApiService = getApiService();
-//        sMvApiService = getMvApiService();
-//        sApphApiService = getApphApiService();
     }
     private void initOkHttp() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -110,25 +104,6 @@ public class RetrofitHelper {
         sOkHttpClient = builder.build();
     }
 
-//    private static MvApiService getMvApiService() {
-//        Retrofit zhihuRetrofit = new Retrofit.Builder()
-//                .baseUrl(MvApiService.HOST)
-//                .client(sOkHttpClient)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .build();
-//        return zhihuRetrofit.create(MvApiService.class);
-//    }
-
-//    private static ApphApiService getApphApiService() {
-//        Retrofit zhihuRetrofit = new Retrofit.Builder()
-//                .baseUrl(ApphApiService.HOST)
-//                .client(sOkHttpClient)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .build();
-//        return zhihuRetrofit.create(ApphApiService.class);
-//    }
     private static ApiService getApiService() {
         Retrofit apiRetrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.HOST)
@@ -140,44 +115,20 @@ public class RetrofitHelper {
     }
 
     public Flowable<RegistBean> registUser() {
-        SystemInfoBean systemInfoBean = SystemInfoBean.getInstance();
-        Map<String ,String> map = new HashMap<>();
-        map.put("channel", systemInfoBean.getChannel());
-        map.put("version", systemInfoBean.getVersionName());
-        map.put("versioncode", String.valueOf(systemInfoBean.getVersionCode()));
-        map.put("device_id", systemInfoBean.getIMEI());
+        SystemInfo systemInfo = SystemInfo.getInstance();
+        Map<String, String> map = new HashMap<>();
+        map.put("channel", systemInfo.getChannel());
+        map.put("version", systemInfo.getVersionName());
+        map.put("versioncode", String.valueOf(systemInfo.getVersionCode()));
+        map.put("device_id", systemInfo.getIMEI());
         map.put("device_name", "");
-        map.put("resolution", systemInfoBean.getResolution());
-        map.put("os", systemInfoBean.getOSVersion());
-        map.put("appname", systemInfoBean.getAppName());
-        map.put("packname", systemInfoBean.getPackageName());
-        map.put("time", systemInfoBean.getTime());
-        map.put("sign", systemInfoBean.getSign());
+        map.put("resolution", systemInfo.getResolution());
+        map.put("os", systemInfo.getOSVersion());
+        map.put("appname", systemInfo.getAppName());
+        map.put("packname", systemInfo.getPackageName());
+        map.put("time", systemInfo.getTime());
+        map.put("sign", systemInfo.getSign());
         return sApiService.registUeser(map);
     }
-
-
-//    public Flowable<IsUserRegisterBean> getIsUserRegistInfo() {
-//        //这里后续要修改成设备名称
-//        return sMvApiService.getIsUserRegistInfo("1", "1", "1");
-//    }
-
-//    public Flowable<RegisterData> initRegisterInfo() {
-//        //这里后续要修改成设备名称
-//        return sApphApiService.initRegisterInfo(
-//                "a294705",
-//                "867905027942921",
-//                "15",
-//                "68:3e:34:9c:0d:db",
-//                "68:3E:34:9C:0D:DC",
-//                "",
-//                "",
-//                "com.feiofjoc.xkjoelb",
-//                "B4:66:CE:B5:A3:BC:6D:36:F8:18:29:B2:BC:27:4A:DA:CB:E9:C0:F4",
-//                "22",
-//                "1",
-//                "2000025",
-//                "0" );
-//    }
 
 }

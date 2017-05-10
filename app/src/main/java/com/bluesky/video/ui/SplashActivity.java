@@ -27,14 +27,6 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
         } else {
             //网络错误，提示弹窗
         }
-//        if (NetworkUtils.isNetworkAvailable()) {
-//            String userId = User1InfoManager.getInstance().getUserId();
-//            if (TextUtils.isEmpty(userId)) {
-//                mPresenter.isUserRegister();
-//            } else {
-//                mPresenter.delayTodo(3000L);
-//            }
-//        }
     }
 
     @Override

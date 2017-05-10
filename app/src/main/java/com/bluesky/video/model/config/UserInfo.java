@@ -1,15 +1,15 @@
-package com.bluesky.video.config;
+package com.bluesky.video.model.config;
 
 /**
  * Created by duchao on 2017/5/9.
  */
 
-public class UserInfoBean {
+public class UserInfo {
 
     private static class SingletonHolder {
-        private static final UserInfoBean INSTANCE = new UserInfoBean();
+        private static final UserInfo INSTANCE = new UserInfo();
     }
-    public static UserInfoBean getInstance() {
+    public static UserInfo getInstance() {
         return SingletonHolder.INSTANCE;
     }
 

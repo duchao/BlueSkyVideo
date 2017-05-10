@@ -5,7 +5,6 @@ import android.app.Application;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.bluesky.video.component.InitializeService;
-import com.bluesky.video.config.SystemInfoBean;
 import com.bluesky.video.di.component.AppComponent;
 import com.bluesky.video.di.component.DaggerAppComponent;
 import com.bluesky.video.di.module.AppModule;

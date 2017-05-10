@@ -1,15 +1,18 @@
 package com.bluesky.video.presenter;
 
 import com.bluesky.video.base.RxPresenter;
-import com.bluesky.video.config.UserInfoBean;
+import com.bluesky.video.model.config.UserInfo;
 import com.bluesky.video.model.bean.RegistBean;
 import com.bluesky.video.model.http.RetrofitHelper;
 import com.bluesky.video.presenter.contract.SplashContract;
 import com.bluesky.video.utils.RxUtils;
 import com.bluesky.video.utils.StringUtils;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
+import io.reactivex.Flowable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -34,8 +37,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 .subscribe(new Consumer<RegistBean>() {
                     @Override
                     public void accept(@NonNull RegistBean registBean) throws Exception {
-                        RegistBean registBean1 = registBean;
-                        UserInfoBean userInfoBean = UserInfoBean.getInstance();
+                        UserInfo userInfoBean = UserInfo.getInstance();
                         int code = registBean.getCode();
                         if (code != 1) {
                             return;
@@ -49,72 +51,21 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                         if (verifySign.equals(sign) && (level > currentLevel)) {
                             userInfoBean.setUserType(level);
                         }
+                        jumpToMain();
+                    }
+                });
+        addSubscribe(rxSubscrition);
+    }
+
+    private void jumpToMain() {
+        Disposable rxSubscrition = Flowable.timer(3, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(@NonNull Long aLong) throws Exception {
                         mView.jumpToMain();
                     }
                 });
         addSubscribe(rxSubscrition);
     }
 
-//    @Override
-//    public void isUserRegister() {
-//       Disposable rxSubscrition = mRetrofitHelper.getIsUserRegistInfo()
-//                .compose(RxUtils.<IsUserRegisterBean>rxSchedulerHelper())
-//                .subscribe(new Consumer<IsUserRegisterBean>() {
-//                    @Override
-//                    public void accept(@NonNull IsUserRegisterBean isUserRegisterBean) throws Exception {
-//                        if (isUserRegisterBean.getFlag() == 0) {
-//                            SharePreferencesHelper.getInstance()
-//                                    .set(SharePreferencesHelper.IS_USER_REGISTER, isUserRegisterBean.getIsRegister());
-//                            initRegist();
-//                        }
-//
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(@NonNull Throwable throwable) throws Exception {
-//
-//                    }
-//                });
-//        addSubscribe(rxSubscrition);
-//    }
-
-//    @Override
-//    public void delayTodo(long millSeconds) {
-//
-//        Disposable rxSubscrition = Flowable.timer(millSeconds, TimeUnit.MILLISECONDS)
-//                .subscribe(new Consumer<Long>() {
-//                    @Override
-//                    public void accept(@NonNull Long aLong) throws Exception {
-//                        mView.jumpToMain();
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(@NonNull Throwable throwable) throws Exception {
-//
-//                    }
-//                });
-//
-//        addSubscribe(rxSubscrition);
-//    }
-
-
-
-//    private void initRegist() {
-//        Disposable rxSubscrition = mRetrofitHelper.initRegisterInfo()
-//                .compose(RxUtils.<RegisterData>rxSchedulerHelper())
-//                .subscribe(new Consumer<RegisterData>() {
-//                    @Override
-//                    public void accept(@NonNull RegisterData registerData) throws Exception {
-//                        UserBean userBean = registerData.getData();
-//                        UserInfo1Manager.getInstance().setUserData(userBean);
-//                        mView.jumpToMain();
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(@NonNull Throwable throwable) throws Exception {
-//
-//                    }
-//                });
-//        addSubscribe(rxSubscrition);
-//    }
 }

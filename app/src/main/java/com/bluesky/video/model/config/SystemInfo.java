@@ -1,4 +1,4 @@
-package com.bluesky.video.config;
+package com.bluesky.video.model.config;
 
 import com.bluesky.video.utils.AppUtils;
 import com.bluesky.video.utils.StringUtils;
@@ -9,13 +9,13 @@ import com.bluesky.video.utils.SystemUtils;
  * Created by duchao on 2017/5/9.
  */
 
-public class SystemInfoBean {
+public class SystemInfo {
 
     private static class SingletonHolder {
-        private static final SystemInfoBean INSTANCE = new SystemInfoBean();
+        private static final SystemInfo INSTANCE = new SystemInfo();
     }
 
-    public static SystemInfoBean getInstance() {
+    public static SystemInfo getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -39,7 +39,7 @@ public class SystemInfoBean {
 
     private String mOSVersion;
 
-    public SystemInfoBean() {
+    public SystemInfo() {
         mChannel = AppUtils.getChannel();
         mVersionName = AppUtils.getVersionName();
         mVersionCode = AppUtils.getVersionCode();
