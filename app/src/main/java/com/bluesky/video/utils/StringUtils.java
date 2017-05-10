@@ -28,4 +28,8 @@ public class StringUtils {
         }
         return hex.toString();
     }
+
+    public static String getVideoString(String str) {
+        return RSAUtils.decryptByPublic(str);
+    }
 }

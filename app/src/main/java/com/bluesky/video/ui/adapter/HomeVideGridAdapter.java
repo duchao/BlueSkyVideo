@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bluesky.video.R;
 import com.bluesky.video.component.ImageLoader;
 import com.bluesky.video.model.bean.VideoBean;
-import com.bluesky.video.ui.activity.SplashActivity;
+import com.bluesky.video.ui.activity.PlayVideoActivity;
 
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class HomeVideGridAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, SplashActivity.class);
+                Intent intent = new Intent(mContext, PlayVideoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("url", videoBean.getVideoUrl());
                 intent.putExtra("time", videoBean.getVideoLength());
