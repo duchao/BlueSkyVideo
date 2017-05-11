@@ -8,7 +8,6 @@
     <color name="black">#ff000000</color>
     <color name="transparent">#00000000</color>
 
-    <color name="biz_audio_progress_bg">#ff00b2ff</color>
-    <color name="biz_audio_progress_first">#ffffffff</color>
-    <color name="biz_audio_progress_second">#ff6b6666</color>
+    <color name="color_00b2ff">#ff00b2ff</color>
+    <color name="color_6b6666">#ff6b6666</color>
 </resources>

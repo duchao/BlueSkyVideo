@@ -22,7 +22,6 @@ import com.bluesky.video.presenter.contract.PlayVideoContract;
 import com.bluesky.video.utils.ScreenUtils;
 import com.bluesky.video.utils.StringUtils;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -40,15 +39,15 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
     private String mZs;
     private String mTimeLength;
 
-    @BindView(R.id.progressbar)
+    @BindView(R.id.progressbar_playvideo)
     View mProgressBarView;
-    @BindView(R.id.surfaceView)
+    @BindView(R.id.surfaceview_playvideo_display)
     SurfaceView mSurfaceView;
-    @BindView(R.id.media_controller_progress)
+    @BindView(R.id.seekbar_controller_progress)
     SeekBar mSeekBar;
-    @BindView(R.id.time)
+    @BindView(R.id.tv_controller_time)
     TextView mTimeView;
-    @BindView(R.id.view_controll)
+    @BindView(R.id.playvideo_controll_bar)
     View mControllView;
     @Override
     protected int getLayout() {
@@ -57,6 +56,14 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
 
     @Override
     protected void initEventAndData() {
+        mProgressBarView.setVisibility(View.VISIBLE);
+        initData();
+        initSurfaceView();
+        initSeekBar();
+        playVideo();
+    }
+
+    private void initData() {
         Intent intent = getIntent();
         if (intent == null) {
             return;
@@ -73,8 +80,9 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
         if(TextUtils.isEmpty(mTimeLength)) {
             mTimeLength = "62:28";
         }
-        mProgressBarView.setVisibility(View.VISIBLE);
+    }
 
+    private void initSurfaceView() {
         mSurfaceView .getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -100,77 +108,26 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
         });
     }
 
+    private void initSeekBar() {
+        mSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
+        int height = ScreenUtils.dip2px(mContext, 30);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_play_video_start);
+        Bitmap thumb = Bitmap.createBitmap(height, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(thumb);
+        canvas.drawBitmap(bitmap,
+                new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
+                new Rect(0, 0, thumb.getWidth(), thumb.getHeight()),
+                null);
+        BitmapDrawable drawable = new BitmapDrawable(getResources(), thumb);
+        mSeekBar.setThumb(drawable);
+        mSeekBar.setThumbOffset(-3);
+    }
+
     private MediaPlayer mMediaPlayer;
     private boolean isTopay = false;
 
-    private void playVideo(String videoUrl) {
-        try {
-            mMediaPlayer = new MediaPlayer();
-            mMediaPlayer.setAudioStreamType(3);
-            mMediaPlayer.setDataSource(videoUrl);
-            mMediaPlayer.setScreenOnWhilePlaying(true);
-            mMediaPlayer.setDisplay(mSurfaceView.getHolder());
-            mMediaPlayer.prepareAsync();
-            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    if (mMediaPlayer != null) {
-                        mMediaPlayer.start();
-                    }
-                    mProgressBarView.setVisibility(View.GONE);
-                    resetUpdataTime();
-
-                    //过五秒开始初始化弹幕相关initDanmu(); 发送数字2
-
-                }
-            });
-            mMediaPlayer.setOnInfoListener(new MediaPlayer.OnInfoListener() {
-                @Override
-                public boolean onInfo(MediaPlayer mp, int what, int extra) {
-                    return false;
-                }
-            });
-            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    int level = UserInfo.getInstance().getUserType();
-                    mSeekBar.setClickable(false);
-                    mSeekBar.setEnabled(false);
-                    if (level == 1) {
-                        if (!isTopay) {
-                            isTopay = true;
-                            // 提示 试看结束请充值！然后打开支付页面intent.putExtra("type", "1");fninish;
-                        }
-                        return;
-                    }
-                    if (level == 4) {
-                        mProgressBarView.setVisibility(View.VISIBLE);
-                        // 3秒后，发送数字 3,执行toastProgress()
-                        return;
-
-                    }
-                    if (level == 5) {
-                        mProgressBarView.setVisibility(View.VISIBLE);
-                        // 3秒后，发送数字 4， 执行toast2();
-                        return;
-                    }
-
-                    if (level == 6) {
-                        mProgressBarView.setVisibility(View.VISIBLE);
-                        // 3秒后，发送数字 5，执行toastlanzuan();
-                        return;
-                    }
-                    if (!isTopay) {
-                        isTopay = true;
-                        // 提示 试看结束请充值！然后打开支付页面intent.putExtra("type", "1");fninish;
-                    }
-
-                }
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void playVideo() {
+        mPresenter.playVideo(mVideoUrl, mSurfaceView);
     }
 
     private void resetUpdataTime() {
@@ -182,20 +139,7 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
                 View.GONE : View.VISIBLE);
     }
 
-    private void initControl() {
-        mSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
-        int height = ScreenUtils.dip2px(mContext, 30);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), 0x7f020094);
-        Bitmap thumb = Bitmap.createBitmap(height, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(thumb);
-        canvas.drawBitmap(bitmap,
-                new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
-                new Rect(0, 0, thumb.getWidth(), thumb.getHeight()),
-                null);
-        BitmapDrawable drawable = new BitmapDrawable(getResources(), thumb);
-        mSeekBar.setThumb(drawable);
-        mSeekBar.setThumbOffset(-3);
-    }
+
 
     @Override
     protected void initInject() {
@@ -305,18 +249,39 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-            mMediaPlayer = null;
-        }
+
+        mPresenter.onDestroy();
         if (mSurfaceView != null) {
             mSurfaceView = null;
         }
-        cancelTimer();
         System.gc();
     }
 
-    private void cancelTimer() {
 
+
+    @Override
+    public void showProgressbar() {
+        mProgressBarView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dismissProgressbar() {
+        mProgressBarView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void disableSeekbar() {
+        mSeekBar.setClickable(false);
+        mSeekBar.setEnabled(false);
+    }
+
+    @Override
+    public void updateSeekbarProgress(int progress) {
+        mSeekBar.setProgress(progress);
+    }
+
+    @Override
+    public void updateControllTime(String time) {
+        mTimeView.setText(time + "/" + mTimeLength);
     }
 }
