@@ -1,7 +1,5 @@
 package com.bluesky.video.presenter.contract;
 
-import android.view.SurfaceView;
-
 import com.bluesky.video.base.BasePresenter;
 import com.bluesky.video.base.BaseView;
 
@@ -11,15 +9,14 @@ import com.bluesky.video.base.BaseView;
 
 public interface PlayVideoContract {
     interface View extends BaseView {
-        void showProgressbar();
-        void dismissProgressbar();
-        void disableSeekbar();
-        void updateSeekbarProgress(int progress);
-        void updateControllTime(String time);
-
+        void playVideo();
+        void controllbarUpdate();
+        void countDownCallback();
     }
     interface Presenter extends BasePresenter<View> {
-        void playVideo(String videoUrl, SurfaceView surfaceView);
-        void onDestroy();
+        void preparePlayVideo();
+        void startControllbarUpdate();
+        void stopControllbarUpdte();
+        void startCountDown(long time);
     }
 }
