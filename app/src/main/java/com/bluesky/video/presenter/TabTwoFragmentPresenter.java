@@ -3,7 +3,7 @@ package com.bluesky.video.presenter;
 import com.bluesky.video.base.RxPresenter;
 import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.http.RetrofitHelper;
-import com.bluesky.video.presenter.contract.TabOneFragmentContract;
+import com.bluesky.video.presenter.contract.TabTwoFragmentContract;
 import com.bluesky.video.utils.RxUtils;
 
 import javax.inject.Inject;
@@ -13,15 +13,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 /**
- * Created by duchao on 2017/5/10.
+ * Created by duchao on 2017/5/26.
  */
 
-public class TabOneFragmentPresenter extends RxPresenter<TabOneFragmentContract.View>
-        implements TabOneFragmentContract.Presenter {
+public class TabTwoFragmentPresenter extends RxPresenter<TabTwoFragmentContract.View>implements TabTwoFragmentContract.Presenter{
 
     private RetrofitHelper mRetrofitHelper;
     @Inject
-    public TabOneFragmentPresenter(RetrofitHelper retrofitHelper) {
+    public TabTwoFragmentPresenter(RetrofitHelper retrofitHelper) {
         mRetrofitHelper = retrofitHelper;
     }
 
@@ -34,11 +33,10 @@ public class TabOneFragmentPresenter extends RxPresenter<TabOneFragmentContract.
                     public void accept(@NonNull VideoData homeData) throws Exception {
                         String code = homeData.getCode();
                         if(code.equals("1")) {
-                            mView.showHomeVideoData(homeData.getVideoList());
+                            mView.showVideoData(homeData.getVideoList());
                         }
                     }
                 });
         addSubscribe(rxSubscrition);
-
     }
 }

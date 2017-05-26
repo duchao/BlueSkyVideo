@@ -20,11 +20,11 @@ import java.util.ArrayList;
  * Created by duchao on 2017/5/10.
  */
 
-public class HomeVideGridAdapter extends BaseAdapter {
+public class TabOneGridAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<VideoBean> mVideoList;
-    public HomeVideGridAdapter(Context context, ArrayList<VideoBean> videoList) {
+    public TabOneGridAdapter(Context context, ArrayList<VideoBean> videoList) {
         mContext = context;
         mVideoList = videoList;
     }

@@ -7,14 +7,16 @@ import com.bluesky.video.model.bean.VideoBean;
 import java.util.ArrayList;
 
 /**
- * Created by duchao on 2017/5/10.
+ * Created by duchao on 2017/5/26.
  */
 
-public interface TabOneFragmentContract {
+public interface TabTwoFragmentContract {
     interface View extends BaseView {
-        void showHomeVideoData(ArrayList<VideoBean> mVideoList);
+
+        void showVideoData(ArrayList<VideoBean> mVideoList);
     }
     interface Presenter extends BasePresenter<View> {
         void getVideoData(String videoType);
+
     }
 }

@@ -2,7 +2,7 @@ package com.bluesky.video.model.http;
 
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
-import com.bluesky.video.model.bean.HomeData;
+import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 import com.bluesky.video.model.config.SystemInfo;
 import com.bluesky.video.utils.NetworkUtils;
@@ -144,8 +144,8 @@ public class RetrofitHelper {
         return sApiService.registUeser("863696033021255", "default01", systemInfo.getSign(), systemInfo.getTime());
     }
 
-   public Flowable<HomeData> getHomeVideoData() {
-       return sApiService.getHomeVideData("1");//默认值为1
+   public Flowable<VideoData> getVideoData(String videoType) {
+       return sApiService.getVideData(videoType);//默认值为1
    }
 
 }

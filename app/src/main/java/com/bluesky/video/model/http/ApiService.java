@@ -1,6 +1,6 @@
 package com.bluesky.video.model.http;
 
-import com.bluesky.video.model.bean.HomeData;
+import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 
 import io.reactivex.Flowable;
@@ -25,5 +25,5 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("video")
-    Flowable<HomeData> getHomeVideData(@Field("videoType") String videoType);
+    Flowable<VideoData> getVideData(@Field("videoType") String videoType);
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by duchao on 2017/5/10.
  */
 
-public class HomeData {
+public class VideoData {
     @SerializedName("code")
     private String mCode;
     @SerializedName("data")

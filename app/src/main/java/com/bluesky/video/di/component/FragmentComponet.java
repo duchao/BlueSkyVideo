@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.bluesky.video.di.module.FragmentModule;
 import com.bluesky.video.di.scope.FragmentScope;
 import com.bluesky.video.ui.fragment.TabOneFragment;
+import com.bluesky.video.ui.fragment.TabTwoFragment;
 
 import dagger.Component;
 
@@ -16,4 +17,5 @@ import dagger.Component;
 public interface FragmentComponet {
     Activity getActivity();
     void inject(TabOneFragment tabOneFragment);
+    void inject(TabTwoFragment tabTwoFragment);
 }
