@@ -9,7 +9,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -25,10 +28,17 @@ import com.bluesky.video.utils.LogUtils;
 import com.bluesky.video.utils.ScreenUtils;
 import com.bluesky.video.utils.StringUtils;
 import com.bluesky.video.utils.ToastUtils;
+import com.opendanmaku.DanmakuItem;
+import com.opendanmaku.DanmakuView;
+import com.opendanmaku.IDanmakuItem;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -52,6 +62,12 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
     TextView mTimeView;
     @BindView(R.id.playvideo_controll_bar)
     View mControllView;
+
+    @BindView(R.id.tv_danumu_button)
+    TextView mDanMuButton;
+
+    DanmakuView mDanMuView;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_play_video;
@@ -63,8 +79,35 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
         initData();
         initSurfaceView();
         initSeekBar();
+        initDanMu();
         preparePlayVideo();
     }
+
+    private void initDanMu() {
+        mDanMuView = (DanmakuView) findViewById(R.id.view_dan_mu);
+        mDanMuView.setVisibility(View.VISIBLE);
+        mDanMuView.addItem(initItems(), true);
+        mDanMuView.show();
+    }
+
+    private List<IDanmakuItem> initItems() {
+        List<IDanmakuItem> itemsList = new ArrayList<>();
+        String[] stringList = StringUtils.getText();
+        Random stringRandom = new Random();
+        int i = 0;
+        int listLength = stringList.length;
+        while(i < listLength) {
+            String item = stringList[stringRandom.nextInt(listLength)];
+            SpannableString ss = new SpannableString(item);
+            ss.setSpan(new ForegroundColorSpan(-1), 0, item.length(), 33);
+            ss.setSpan(new AbsoluteSizeSpan(50), 0, item.length(), 33);
+            itemsList.add(new DanmakuItem(this, ss, mDanMuView.getWidth(), 0 ,0 ,0, 1.5f));
+            i++;
+        }
+        return  itemsList;
+    }
+
+
 
     private void initData() {
         Intent intent = getIntent();
@@ -390,4 +433,17 @@ public class PlayVideoActivity extends BaseMvpActivity<PlayVideoPresenter>
         startActivity(intent);
         finish();
     }
+
+    @OnClick(R.id.tv_danumu_button)
+    void onClickDanmu() {
+        if (mDanMuView != null) {
+            mDanMuView.hide();
+            mDanMuView.clear();
+            mDanMuView.setVisibility(View.GONE);
+            mDanMuButton.setVisibility(View.GONE);
+        }
+    }
+
+
+
 }

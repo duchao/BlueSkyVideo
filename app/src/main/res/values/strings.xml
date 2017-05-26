@@ -2,4 +2,25 @@
     <string name="app_name">BlueSkyVideo</string>
     <string name="fragment_tab_one_footer_text">升级会员，查看更多</string>
     <string name="play_video_default_time">00:00/00:00</string>
+    <string name="play_video_close_danmu">关闭弹幕</string>
+    <string name="mine_touxian">头衔</string>
+    <string name="mine_tequan">特权</string>
+    <string name="mine_caozuo">操作</string>
+    <string name="mine_pay_vip">开通会员</string>
+    <string name="mine_vip_privilege">会员特权</string>
+    <string name="mine_many_pianku">海量片库</string>
+    <string name="mine_many_tuku">海量图库</string>
+    <string name="mine_girl_service">美女客服</string>
+    <string name="mine_hd_exculsive">高清专享</string>
+    <string name="mine_qq">QQ:12345678</string>
+    <string name="mine_work_time">工作时间: 09:00 -- 18:00</string>
+    <string name="mine_vip_voice_toast">注:会员可享受语音视频服务哦</string>
+    <string name="mine_qq_question">ps:加客服的时候请您备注您的账号+遇到的问题</string>
+    <string name="mine_title">我的</string>
+    <string name="main_mine">头像</string>
+
+
+
+
+
 </resources>

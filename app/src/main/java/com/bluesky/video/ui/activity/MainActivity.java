@@ -1,9 +1,13 @@
 package com.bluesky.video.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.bluesky.video.R;
 import com.bluesky.video.base.BaseMvpActivity;
@@ -23,6 +27,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     TabLayout mFooterTabLayout;
     @BindView(R.id.vp_main_content)
     ViewPager mContentViewPager;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private TabLayout.Tab one;
     private TabLayout.Tab two;
@@ -40,6 +46,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initEventAndData() {
+        setToolbar(mToolbar,"");
         initFragment();
         initTabTitle();
         MainViewPagerAdapter mMainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(),
@@ -82,5 +89,23 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         four.setIcon(ContextCompat.getDrawable(mContext, R.mipmap.ic_launcher));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_main_head:
+                Intent intent = new Intent(this, MineActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

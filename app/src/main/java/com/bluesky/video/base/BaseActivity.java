@@ -63,4 +63,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
     }
+
+    protected void setToolbar(Toolbar toolbar, int titleId) {
+        toolbar.setTitle(getString(titleId));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
 }

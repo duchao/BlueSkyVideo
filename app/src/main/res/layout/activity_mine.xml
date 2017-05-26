@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_222222"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_toolbar"
+        android:id="@+id/toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@color/color_313131">
+
+        <ImageView
+            android:id="@+id/iv_mine_head"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="12dp"
+            android:src="@drawable/ic_mine_head" />
+
+        <TextView
+            android:id="@+id/tv_mine_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@id/iv_mine_head"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/color_313131">
+
+        <TextView
+            android:id="@+id/tv_mine_touxian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:paddingTop="12.0dip"
+            android:text="@string/mine_touxian"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mine_touxian_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_mine_touxian"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="12dp"
+            android:textColor="@color/color_941daf" />
+
+        <TextView
+            android:id="@+id/tv_mine_tequan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_mine_touxian_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/mine_tequan"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mine_tequan_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_mine_touxian_content"
+            android:layout_alignBottom="@id/tv_mine_touxian_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/color_941daf" />
+
+        <TextView
+            android:id="@+id/tv_mine_caozuo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_mine_touxian_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="32dp"
+            android:text="@string/mine_caozuo"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mine_pay_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_mine_tequan_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/ic_mine_red_button"
+            android:gravity="center"
+            android:padding="3.0dip"
+            android:text="@string/mine_pay_vip"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/color_313131">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/iv_mine_vip_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_mine_vip_bg" />
+
+            <TextView
+                android:id="@+id/iv_mine_vip_privilege"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/mine_vip_privilege"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_mine_pianku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="18dp"
+            android:drawablePadding="6dp"
+            android:drawableTop="@drawable/ic_mine_pianku"
+            android:text="@string/mine_many_pianku"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_mine_tuku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_mine_pianku"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@id/tv_mine_pianku"
+            android:drawablePadding="6dp"
+            android:drawableTop="@drawable/ic_mine_tuku"
+            android:text="@string/mine_many_tuku"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mine_girl_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_mine_tuku"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:drawablePadding="6dp"
+            android:drawableTop="@drawable/ic_mine_beautiful_girl"
+            android:text="@string/mine_girl_service"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_mine_hd_exculsive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_mine_girl_service"
+            android:layout_marginRight="21dp"
+            android:layout_toLeftOf="@id/tv_mine_girl_service"
+            android:drawablePadding="6dp"
+            android:drawableTop="@drawable/ic_mine_hd_exclusive"
+            android:text="@string/mine_hd_exculsive"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_mine_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/mine_qq"
+        android:textColor="@color/white"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_baiduyun"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_313131">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/mine_work_time"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_313131">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/mine_vip_voice_toast"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_313131">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/mine_qq_question"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</LinearLayout>

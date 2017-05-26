@@ -1,12 +1,11 @@
 package com.bluesky.video.presenter;
 
 import com.bluesky.video.base.RxPresenter;
-import com.bluesky.video.model.config.UserInfo;
 import com.bluesky.video.model.bean.RegistBean;
+import com.bluesky.video.model.config.UserInfo;
 import com.bluesky.video.model.http.RetrofitHelper;
 import com.bluesky.video.presenter.contract.SplashContract;
 import com.bluesky.video.utils.RxUtils;
-import com.bluesky.video.utils.StringUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -47,8 +46,11 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                         String userId = registBean.getUserId();
                         String sign = registBean.getSign();
                         userInfoBean.setUserId(userId);
-                        String verifySign = StringUtils.getMD5(userId + "?U$@t^OQ.%k>A=n{&3P," + level);
-                        if (verifySign.equals(sign) && (level > currentLevel)) {
+//                        String verifySign = StringUtils.getMD5(userId + "?U$@t^OQ.%k>A=n{&3P," + level);
+//                        if (verifySign.equals(sign) && (level > currentLevel)) {
+//                            userInfoBean.setUserType(level);
+//                        }
+                        if (level > currentLevel) {
                             userInfoBean.setUserType(level);
                         }
                         jumpToMain(0);

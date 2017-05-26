@@ -57,6 +57,9 @@ dependencies {
     //GridView with Header and Footer
     compile 'in.srain.cube:grid-view-with-header-footer:1.0.12'
 
+    // dan mu
+    compile 'com.linsea:opendanmaku:1.0.0@aar'
+
 
 
 }

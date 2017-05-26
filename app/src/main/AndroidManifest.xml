@@ -29,6 +29,12 @@
         <activity android:name=".ui.activity.PlayVideoActivity"
                   android:screenOrientation="landscape">
         </activity>
+
+        <activity android:name=".ui.activity.MineActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

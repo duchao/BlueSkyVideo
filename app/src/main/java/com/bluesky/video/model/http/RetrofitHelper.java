@@ -118,18 +118,30 @@ public class RetrofitHelper {
     public Flowable<RegistBean> registUser() {
         SystemInfo systemInfo = SystemInfo.getInstance();
         Map<String, String> map = new HashMap<>();
-        map.put("channel", systemInfo.getChannel());
-        map.put("version", systemInfo.getVersionName());
-        map.put("versioncode", String.valueOf(systemInfo.getVersionCode()));
-        map.put("device_id", systemInfo.getIMEI());
-        map.put("device_name", "");
-        map.put("resolution", systemInfo.getResolution());
-        map.put("os", systemInfo.getOSVersion());
-        map.put("appname", systemInfo.getAppName());
-        map.put("packname", systemInfo.getPackageName());
-        map.put("time", systemInfo.getTime());
+//        map.put("channel", systemInfo.getChannel());
+//        map.put("version", systemInfo.getVersionName());
+//        map.put("versioncode", String.valueOf(systemInfo.getVersionCode()));
+//        map.put("device_id", systemInfo.getIMEI());
+//        map.put("device_name", "");
+//        map.put("resolution", systemInfo.getResolution());
+//        map.put("os", systemInfo.getOSVersion());
+//        map.put("appname", systemInfo.getAppName());
+//        map.put("packname", systemInfo.getPackageName());
+//        map.put("time", systemInfo.getTime());
+//        map.put("sign", systemInfo.getSign());
+        map.put("device_name", "FRD-AL00");
+        map.put("packname", "com.wan.wanplayer");
+        map.put("device_id", "863696033021255");
+        map.put("os", "7.0");
+        map.put("appname", "情涩快播");
+        map.put("channel", "default01");
         map.put("sign", systemInfo.getSign());
-        return sApiService.registUeser(map);
+        map.put("time", systemInfo.getTime());
+        map.put("versioncode", "18");
+        map.put("version", "2.8.0");
+        map.put("resolution", "1080*1794");
+
+        return sApiService.registUeser("863696033021255", "default01", systemInfo.getSign(), systemInfo.getTime());
     }
 
    public Flowable<HomeData> getHomeVideoData() {

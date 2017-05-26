@@ -1,7 +1,6 @@
 package com.bluesky.video.model.config;
 
 import com.bluesky.video.utils.AppUtils;
-import com.bluesky.video.utils.StringUtils;
 import com.bluesky.video.utils.SystemUtils;
 
 
@@ -54,12 +53,14 @@ public class SystemInfo {
 
     private String initTime() {
         long time = System.currentTimeMillis() / 1000L;
+        time = 1495774927;
         return String.valueOf(time);
     }
 
     private String initSign(String channel, String deviceId, String time) {
         String key = channel + deviceId + time + "?U$@t^OQ.%k>A=n{&3P,";
-        return StringUtils.getMD5(key);
+//        return StringUtils.getMD5(key);
+        return "a530a1c69223a0e33cbf00507e808c06";
     }
 
     public String getChannel() {

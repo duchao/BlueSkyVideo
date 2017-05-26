@@ -25,7 +25,7 @@ public class UserInfo {
     }
 
     public int getUserType() {
-        return mUserType;
+        return 6;
     }
 
     public void setUserType(int userType) {
