@@ -30,7 +30,6 @@ public class TabTwoFragment extends BaseMvpFragment<TabTwoFragmentPresenter> imp
     GridViewWithHeaderAndFooter mGridView;
     private TextView mFootView;
 
-    private List<VideoBean> mVideoList;
     private TabTwoGridAdapter mTabTwoGridAdapter;
 
 
@@ -47,7 +46,6 @@ public class TabTwoFragment extends BaseMvpFragment<TabTwoFragmentPresenter> imp
     @Override
     protected void initEventAndData() {
         initViews();
-        mVideoList = new ArrayList<>();
         int type = UserInfo.getInstance().getUserType();
         String videoType = "8";
         if (type != 1) {

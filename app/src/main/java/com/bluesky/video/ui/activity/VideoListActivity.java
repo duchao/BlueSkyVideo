@@ -32,7 +32,6 @@ public class VideoListActivity extends BaseMvpActivity<VideoListPresenter> imple
         mVideoListGridAdapter = new VideoListGridAdapter(mContext, videoList);
         mGridView.setAdapter(mVideoListGridAdapter);
         mVideoListGridAdapter.notifyDataSetChanged();
-
     }
 
     @Override

@@ -1,19 +1,16 @@
 package com.bluesky.video.ui.fragment;
 
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.bluesky.video.R;
 import com.bluesky.video.base.BaseMvpFragment;
 import com.bluesky.video.model.bean.PinDaoBean;
-import com.bluesky.video.model.bean.VideoBean;
 import com.bluesky.video.presenter.TabEightFragmentPresenter;
 import com.bluesky.video.presenter.contract.TabEightFragmentContract;
 import com.bluesky.video.ui.adapter.TabEightGridAdapter;
 import com.bluesky.video.utils.NetworkUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -24,9 +21,7 @@ import butterknife.BindView;
 public class TabEightFragment extends BaseMvpFragment<TabEightFragmentPresenter> implements TabEightFragmentContract.View {
     @BindView(R.id.gv_fragment_content)
     GridView mGridView;
-    private TextView mFootView;
 
-    private List<VideoBean> mVideoList;
     private TabEightGridAdapter mTabEightGridAdapter;
 
 

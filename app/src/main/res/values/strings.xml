@@ -18,6 +18,10 @@
     <string name="mine_qq_question">ps:加客服的时候请您备注您的账号+遇到的问题</string>
     <string name="mine_title">我的</string>
     <string name="main_mine">头像</string>
+    <string name="view_search_btn_search">搜索</string>
+    <string name="fragment_tab_nine_search_txt">输入演员或者影片名</string>
+    <string name="fragment_tab_nine_hot_search">热门搜索</string>
+    <string name="fragment_tab_nine_search_txt_no_empety">搜索内容不能为空</string>
 
 
 

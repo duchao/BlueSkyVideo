@@ -30,7 +30,6 @@ public class TabFiveFragment extends BaseMvpFragment<TabFiveFragmentPresenter> i
     GridViewWithHeaderAndFooter mGridView;
     private TextView mFootView;
 
-    private List<VideoBean> mVideoList;
     private TabTwoGridAdapter mTabTwoGridAdapter;
 
 
@@ -47,7 +46,6 @@ public class TabFiveFragment extends BaseMvpFragment<TabFiveFragmentPresenter> i
     @Override
     protected void initEventAndData() {
         initViews();
-        mVideoList = new ArrayList<>();
         int type = UserInfo.getInstance().getUserType();
         String videoType = "5";
         if (NetworkUtils.isNetworkAvailable()) {

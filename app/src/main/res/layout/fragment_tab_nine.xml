@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <EditText
+            android:id="@+id/et_fragment_tab_nine_search_txt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_fragment_tab_nine_search_txt_bg"
+            android:hint="@string/fragment_tab_nine_search_txt"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:textColor="@color/color_e22869"
+            android:textColorHint="@color/color_dcd9d9"
+            android:textSize="14sp" />
+
+        <com.bluesky.video.ui.view.SearchButtonView
+            android:id="@+id/sbv_fragment_tab_nine_search"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_222222" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/fragment_tab_nine_hot_search"
+        android:textColor="@color/color_222222"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/gv_fragment_tab_nine_search_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:padding="30dp"
+        android:paddingTop="15dp"
+        android:verticalSpacing="10dp"
+        android:visibility="visible" />
+</LinearLayout>

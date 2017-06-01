@@ -16,7 +16,6 @@ import com.bluesky.video.utils.NetworkUtils;
 import com.bluesky.video.utils.ScreenUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import in.srain.cube.views.GridViewWithHeaderAndFooter;
@@ -30,7 +29,6 @@ public class TabFourFragment extends BaseMvpFragment<TabFourFragmentPresenter> i
     GridViewWithHeaderAndFooter mGridView;
     private TextView mFootView;
 
-    private List<VideoBean> mVideoList;
     private TabTwoGridAdapter mTabTwoGridAdapter;
 
 
@@ -47,7 +45,6 @@ public class TabFourFragment extends BaseMvpFragment<TabFourFragmentPresenter> i
     @Override
     protected void initEventAndData() {
         initViews();
-        mVideoList = new ArrayList<>();
         int type = UserInfo.getInstance().getUserType();
         String videoType = "4";
         if (NetworkUtils.isNetworkAvailable()) {

@@ -15,7 +15,7 @@ import com.bluesky.video.presenter.MainPresenter;
 import com.bluesky.video.presenter.contract.MainContract;
 import com.bluesky.video.ui.adapter.MainViewPagerAdapter;
 import com.bluesky.video.ui.fragment.TabEightFragment;
-import com.bluesky.video.ui.fragment.TabFiveFragment;
+import com.bluesky.video.ui.fragment.TabNineFragment;
 import com.bluesky.video.ui.fragment.TabSevenFragment;
 import com.bluesky.video.ui.fragment.TabSixFragment;
 
@@ -67,7 +67,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     private void initFragment() {
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(new TabFiveFragment());
+        mFragmentList.add(new TabNineFragment());
         mFragmentList.add(new TabSixFragment());
         mFragmentList.add(new TabSevenFragment());
         mFragmentList.add(new TabEightFragment());
