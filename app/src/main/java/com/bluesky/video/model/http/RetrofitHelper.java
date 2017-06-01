@@ -2,6 +2,7 @@ package com.bluesky.video.model.http;
 
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
+import com.bluesky.video.model.bean.PinDaoData;
 import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 import com.bluesky.video.model.config.SystemInfo;
@@ -146,6 +147,10 @@ public class RetrofitHelper {
 
    public Flowable<VideoData> getVideoData(String videoType) {
        return sApiService.getVideData(videoType);//默认值为1
+   }
+
+   public Flowable<PinDaoData> getPinDaoData(String parentId) {
+       return sApiService.getPinDaoData(parentId);
    }
 
 }

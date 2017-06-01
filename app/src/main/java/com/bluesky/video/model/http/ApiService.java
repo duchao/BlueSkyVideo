@@ -1,5 +1,6 @@
 package com.bluesky.video.model.http;
 
+import com.bluesky.video.model.bean.PinDaoData;
 import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 
@@ -26,4 +27,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("video")
     Flowable<VideoData> getVideData(@Field("videoType") String videoType);
+
+    @FormUrlEncoded
+    @POST("pindao")
+    Flowable<PinDaoData> getPinDaoData(@Field("parentid") String parentId);
 }

@@ -7,6 +7,7 @@ import com.bluesky.video.di.scope.ActivityScope;
 import com.bluesky.video.ui.activity.MainActivity;
 import com.bluesky.video.ui.activity.PlayVideoActivity;
 import com.bluesky.video.ui.activity.SplashActivity;
+import com.bluesky.video.ui.activity.VideoListActivity;
 
 import dagger.Component;
 
@@ -20,5 +21,6 @@ public interface ActivityComponent {
     void inject(SplashActivity splashActivity);
     void inject(MainActivity mainActivity);
     void inject(PlayVideoActivity playVideoActivity);
+    void inject(VideoListActivity videoListActivity);
 
 }
