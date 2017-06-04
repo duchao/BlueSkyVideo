@@ -11,13 +11,13 @@ import com.bluesky.video.model.bean.VideoBean;
 import com.bluesky.video.presenter.TabOneFragmentPresenter;
 import com.bluesky.video.presenter.contract.TabOneFragmentContract;
 import com.bluesky.video.ui.adapter.TabOneGridAdapter;
+import com.bluesky.video.ui.view.GridViewWithHeaderAndFooter;
 import com.bluesky.video.utils.NetworkUtils;
 import com.bluesky.video.utils.ScreenUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
-import in.srain.cube.views.GridViewWithHeaderAndFooter;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -73,7 +73,7 @@ public class TabOneFragment extends BaseMvpFragment<TabOneFragmentPresenter>
     }
 
     @Override
-    public void showHomeVideoData(ArrayList<VideoBean> mVideoList) {
+    public void showHomeVideoData(List<VideoBean> mVideoList) {
         mTabOneGridAdapter = new TabOneGridAdapter(mContext, mVideoList);
         mGridView.setAdapter(mTabOneGridAdapter);
         mTabOneGridAdapter.notifyDataSetChanged();

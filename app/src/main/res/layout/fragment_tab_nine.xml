@@ -24,15 +24,40 @@
             android:textColorHint="@color/color_dcd9d9"
             android:textSize="14sp" />
 
-        <com.bluesky.video.ui.view.SearchButtonView
-            android:id="@+id/sbv_fragment_tab_nine_search"
+        <RelativeLayout
+            android:id="@+id/rl_fragment_tab_nine_search"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="20dp"
-            android:background="@color/color_222222" />
+            android:background="@color/color_222222">
+
+            <LinearLayout
+                android:id="@+id/view_search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_view_search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/view_search_btn_search"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <TextView

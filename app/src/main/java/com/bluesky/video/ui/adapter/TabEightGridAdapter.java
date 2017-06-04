@@ -14,7 +14,7 @@ import com.bluesky.video.component.ImageLoader;
 import com.bluesky.video.model.bean.PinDaoBean;
 import com.bluesky.video.ui.activity.VideoListActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 public class TabEightGridAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<PinDaoBean> mPinDaoList;
-    public TabEightGridAdapter(Context context, ArrayList<PinDaoBean> pinDaoList) {
+    private List<PinDaoBean> mPinDaoList;
+    public TabEightGridAdapter(Context context, List<PinDaoBean> pinDaoList) {
         mContext = context;
         mPinDaoList = pinDaoList;
     }

@@ -1,6 +1,9 @@
 package com.bluesky.video.model.http;
 
+import com.bluesky.video.model.bean.ForumData;
 import com.bluesky.video.model.bean.PinDaoData;
+import com.bluesky.video.model.bean.SearchKeyData;
+import com.bluesky.video.model.bean.SearchVideoTypeData;
 import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 
@@ -31,4 +34,16 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("pindao")
     Flowable<PinDaoData> getPinDaoData(@Field("parentid") String parentId);
+
+    @FormUrlEncoded
+    @POST("video")
+    Flowable<ForumData> getForumData(@Field("videoType") String videoType);
+
+    @FormUrlEncoded
+    @POST("search")
+    Flowable<SearchKeyData> getSearchKeyData(@Field("keyword") String key);
+
+    @FormUrlEncoded
+    @POST("search")
+    Flowable<SearchVideoTypeData> getSearchVideoTypeData(@Field("videoType") String videoType);
 }

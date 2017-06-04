@@ -2,7 +2,7 @@ package com.bluesky.video.model.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -12,7 +12,7 @@ public class VideoData {
     @SerializedName("code")
     private String mCode;
     @SerializedName("data")
-    private ArrayList<VideoBean> mVideoList;
+    private List<VideoBean> mVideoList;
 
     public String getCode() {
         return mCode;
@@ -22,11 +22,11 @@ public class VideoData {
         this.mCode = code;
     }
 
-    public ArrayList<VideoBean> getVideoList() {
+    public List<VideoBean> getVideoList() {
         return mVideoList;
     }
 
-    public void setVideoList(ArrayList<VideoBean> videoList) {
+    public void setVideoList(List<VideoBean> videoList) {
         this.mVideoList = videoList;
     }
 }

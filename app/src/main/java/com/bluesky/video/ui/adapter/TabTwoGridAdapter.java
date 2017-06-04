@@ -16,7 +16,7 @@ import com.bluesky.video.model.config.UserInfo;
 import com.bluesky.video.ui.activity.PlayVideoActivity;
 import com.bluesky.video.ui.activity.SplashActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -25,8 +25,8 @@ import java.util.ArrayList;
 public class TabTwoGridAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<VideoBean> mVideoList;
-    public TabTwoGridAdapter(Context context, ArrayList<VideoBean> videoList) {
+    private List<VideoBean> mVideoList;
+    public TabTwoGridAdapter(Context context, List<VideoBean> videoList) {
         mContext = context;
         mVideoList = videoList;
     }

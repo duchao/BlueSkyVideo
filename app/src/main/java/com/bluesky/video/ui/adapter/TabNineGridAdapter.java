@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.bluesky.video.R;
 import com.bluesky.video.model.bean.PinDaoBean;
-import com.bluesky.video.ui.activity.SplashActivity;
+import com.bluesky.video.ui.activity.SearchListActivity;
 
 import java.util.List;
 
@@ -63,13 +63,12 @@ public class TabNineGridAdapter extends BaseAdapter {
                 // 打开搜索activity
                 String videoName = pinDaoBean.getVideoTypeName();
                 String videoId = pinDaoBean.getVideTypeId();
-                Intent intent = new Intent(mContext, SplashActivity.class);
+                Intent intent = new Intent(mContext, SearchListActivity.class);
                 intent.putExtra("key", videoName);
                 intent.putExtra("id", videoId);
                 mContext.startActivity(intent);
             }
         });
-
         return convertView;
     }
 

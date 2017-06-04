@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_item_tab_ten_forum_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_tab_ten_forum_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="求片交流区"
+            android:textColor="@color/color_e22869"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_item_tab_ten_forum_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="求片交流区"
+            android:textColor="@color/color_4c4c4c"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_tab_ten_forum_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="求片交流区"
+            android:textColor="@color/color_dcd9d9"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

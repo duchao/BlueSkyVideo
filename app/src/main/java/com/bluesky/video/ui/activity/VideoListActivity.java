@@ -12,7 +12,7 @@ import com.bluesky.video.presenter.contract.VideoListContract;
 import com.bluesky.video.ui.adapter.VideoListGridAdapter;
 import com.bluesky.video.utils.NetworkUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -28,7 +28,7 @@ public class VideoListActivity extends BaseMvpActivity<VideoListPresenter> imple
     GridView mGridView;
     VideoListGridAdapter mVideoListGridAdapter;
     @Override
-    public void showVideoData(ArrayList<VideoBean> videoList) {
+    public void showVideoData(List<VideoBean> videoList) {
         mVideoListGridAdapter = new VideoListGridAdapter(mContext, videoList);
         mGridView.setAdapter(mVideoListGridAdapter);
         mVideoListGridAdapter.notifyDataSetChanged();

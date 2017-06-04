@@ -14,7 +14,7 @@ import com.bluesky.video.component.ImageLoader;
 import com.bluesky.video.model.bean.VideoBean;
 import com.bluesky.video.ui.activity.SplashActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class VideoListGridAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<VideoBean> mVideoList;
+    private List<VideoBean> mVideoList;
 
-    public VideoListGridAdapter(Context context, ArrayList<VideoBean> videoList) {
+    public VideoListGridAdapter(Context context, List<VideoBean> videoList) {
         mContext = context;
         mVideoList = videoList;
     }

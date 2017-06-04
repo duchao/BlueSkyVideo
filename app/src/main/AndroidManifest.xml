@@ -38,6 +38,10 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui.activity.SearchListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

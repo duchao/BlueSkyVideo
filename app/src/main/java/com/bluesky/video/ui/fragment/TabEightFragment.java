@@ -10,7 +10,7 @@ import com.bluesky.video.presenter.contract.TabEightFragmentContract;
 import com.bluesky.video.ui.adapter.TabEightGridAdapter;
 import com.bluesky.video.utils.NetworkUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -47,7 +47,7 @@ public class TabEightFragment extends BaseMvpFragment<TabEightFragmentPresenter>
     }
 
     @Override
-    public void showPinDaoData(ArrayList<PinDaoBean> mPinDaoList) {
+    public void showPinDaoData(List<PinDaoBean> mPinDaoList) {
         mTabEightGridAdapter = new TabEightGridAdapter(mContext, mPinDaoList);
         mGridView.setAdapter(mTabEightGridAdapter);
         mTabEightGridAdapter.notifyDataSetChanged();

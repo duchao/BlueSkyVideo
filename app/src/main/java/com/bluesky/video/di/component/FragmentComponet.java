@@ -11,6 +11,7 @@ import com.bluesky.video.ui.fragment.TabNineFragment;
 import com.bluesky.video.ui.fragment.TabOneFragment;
 import com.bluesky.video.ui.fragment.TabSevenFragment;
 import com.bluesky.video.ui.fragment.TabSixFragment;
+import com.bluesky.video.ui.fragment.TabTenFragment;
 import com.bluesky.video.ui.fragment.TabThreeFragment;
 import com.bluesky.video.ui.fragment.TabTwoFragment;
 
@@ -32,6 +33,7 @@ public interface FragmentComponet {
     void inject(TabSevenFragment tabSevenFragment);
     void inject(TabEightFragment tabEightFragment);
     void inject(TabNineFragment tabNineFragment);
+    void inject(TabTenFragment tabTenFragment);
 
 
 }

@@ -2,7 +2,10 @@ package com.bluesky.video.model.http;
 
 import com.bluesky.video.BuildConfig;
 import com.bluesky.video.app.Constants;
+import com.bluesky.video.model.bean.ForumData;
 import com.bluesky.video.model.bean.PinDaoData;
+import com.bluesky.video.model.bean.SearchKeyData;
+import com.bluesky.video.model.bean.SearchVideoTypeData;
 import com.bluesky.video.model.bean.VideoData;
 import com.bluesky.video.model.bean.RegistBean;
 import com.bluesky.video.model.config.SystemInfo;
@@ -151,6 +154,18 @@ public class RetrofitHelper {
 
    public Flowable<PinDaoData> getPinDaoData(String parentId) {
        return sApiService.getPinDaoData(parentId);
+   }
+
+   public Flowable<ForumData> getForumData(String videoType) {
+       return sApiService.getForumData(videoType);
+   }
+
+   public Flowable<SearchKeyData> getSearchKeyData(String key) {
+       return sApiService.getSearchKeyData(key);
+   }
+
+   public Flowable<SearchVideoTypeData> getSearchVideoTypeData(String videoType) {
+       return sApiService.getSearchVideoTypeData(videoType);
    }
 
 }

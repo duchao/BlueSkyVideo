@@ -14,7 +14,7 @@ import com.bluesky.video.component.ImageLoader;
 import com.bluesky.video.model.bean.VideoBean;
 import com.bluesky.video.ui.activity.PlayVideoActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by duchao on 2017/5/10.
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 public class TabOneGridAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<VideoBean> mVideoList;
-    public TabOneGridAdapter(Context context, ArrayList<VideoBean> videoList) {
+    private List<VideoBean> mVideoList;
+    public TabOneGridAdapter(Context context, List<VideoBean> videoList) {
         mContext = context;
         mVideoList = videoList;
     }
